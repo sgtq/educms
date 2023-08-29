@@ -29,11 +29,11 @@ const editing = ref(false);
         <div class="flex-1">
             <div class="flex justify-between items-center">
                 <div>
-                    <span class="text-gray-800">{{ article.user.name }}</span>
+                    <span class="text-gray-800">{{ article.author.name }}</span>
                     <small class="ml-2 text-sm text-gray-600">{{ dayjs(article.created_at).fromNow() }}</small>
                     <small v-if="article.created_at !== article.updated_at" class="text-sm text-gray-600"> &middot; edited</small>
                 </div>
-                <Dropdown v-if="article.user.id === $page.props.auth.user.id">
+                <Dropdown v-if="article.author.id === $page.props.auth.user.id">
                     <template #trigger>
                         <button>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">

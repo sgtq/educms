@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Http\Requests\ArticleRequest;
+use App\Http\Requests\ArticleStoreRequest;
+use App\Http\Requests\ArticleUpdateRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -17,22 +17,14 @@ class ArticleController extends Controller
     public function index(): Response
     {
         return Inertia::render('Articles/Index', [
-            'articles' => Article::with('user:id,name')->latest()->get(),
+            'articles' => Article::with('author:id,name')->latest()->get(),
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ArticleRequest $request): RedirectResponse
+    public function store(ArticleStoreRequest $request): RedirectResponse
     {
         $request->user()->articles()->create(
             $request->validated()
@@ -50,17 +42,9 @@ class ArticleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Article $article)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(ArticleRequest $request, Article $article): RedirectResponse
+    public function update(ArticleUpdateRequest $request, Article $article): RedirectResponse
     {
         $this->authorize('update', $article);
 
