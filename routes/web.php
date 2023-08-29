@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 Route::resource('articles', ArticleController::class)
-    ->only(['index', 'store', 'update', ])
+    ->only(['index', 'store', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function () {
