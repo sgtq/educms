@@ -18,8 +18,9 @@ eduCMS is a simple Content Management System (CMS) for educational articles, usi
 4. Open a laravel container terminal in docker and run command: ´php artisan migrate´ to create database and tables.
 5. Open a second terminal in same container and run ´npm run dev´ to run needed servers (vite and php).
 6. Visit app on [http://localhost](http://localhost)
-7. For API usage, get to the collection's [repository](https://github.com/sgtq/educms-api) and Import to [Postman](https://www.postman.com/downloads/).
 7. Register a user and use it all.
+8. For API usage, get to the collection's [repository](https://github.com/sgtq/educms-api) and Import to [Postman](https://www.postman.com/downloads/). Run get_token first to log in.
+9. To Test automatically, open a new terminal into container and run command ´php artisan test´ which will all automatic tests.
 
 ## Code of Conduct
 

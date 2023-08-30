@@ -38,9 +38,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        return ArticleResource::make(
-            Article::with('author')
-        );
+        return ArticleResource::make($article);
     }
 
     /**
